@@ -46,7 +46,7 @@ if ($_POST['sectionName']) {
         $checkForSection->store_result();
         if($checkForSection->num_rows === 0) {
             $insertNewSection = $conn->prepare("INSERT INTO `sections` 
-                                                (`id`, `client_id`, `name`)
+                                                (`ID`, `client_id`, `name`)
                                                 VALUES (?,?,?)");
             $insertNewSection->bind_param("iis", $sectionID, $clientID, $sectionName);
             $insertNewSection->execute();
@@ -73,15 +73,15 @@ if($_POST['linkName']) {
     $checkForSection->store_result();
     //    $checkForSection->bind_result() bind the result of query to a variable, but I don't need to bind it because this query was just a simple check.
     if($checkForSection->num_rows !== 0) {
-        $checkForLink = $conn->prepare("SELECT id
+        $checkForLink = $conn->prepare("SELECT ID
                                               FROM `links`
-                                              WHERE id = ?");
+                                              WHERE ID = ?");
         $checkForLink->bind_param("i", $linkID);
         $checkForLink->execute();
         $checkForLink->store_result();
         if($checkForLink->num_rows === 0) {
             $insertNewLink = $conn->prepare("INSERT INTO `links` 
-                                            (`id`, `section_id`, `name`)
+                                            (`ID`, `section_id`, `name`)
                                             VALUES (?,?,?)");
             $insertNewLink->bind_param("iis", $linkID, $sectionID, $linkName);
             $insertNewLink->execute();
@@ -95,7 +95,4 @@ if($_POST['linkName']) {
         print(json_encode($output));
     }
 }
-
-
-
 ?>
