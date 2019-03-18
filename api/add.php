@@ -2,7 +2,9 @@
 
 require_once('connect.php');
 $output = [];
-
+//Section of code to add a new client.
+//first check if a client with the given ID already exists.
+//second if the client does NOT already exist insert it to the table.
 if ($_POST['ClientName']) {
     $ClientName = $_POST['ClientName'];
     $clientID = $_POST['clientID'];
@@ -26,6 +28,10 @@ if ($_POST['ClientName']) {
     }
 }
 
+//Section of code to add a section.
+//First check if there is a client that this section would belong to.
+//Second, if there is a client this section can belong to, check if the section we want to add already exists.
+//lastly, if the section does NOT exist and there is a client for this section to belong to, insert the new section.
 if ($_POST['sectionName']) {
     $clientID = $_POST['clientID'];
     $sectionName = $_POST['sectionName'];
@@ -61,6 +67,10 @@ if ($_POST['sectionName']) {
     }
 }
 
+//Section of code to insert a new link/
+//First check if there is a section this link can belong to.]
+//Secondly if there is a section it can belong to, check if a link with the given ID already exists.
+//Lastly if there is a section the link can belong to and the link does NOT already exist, insert the new link.
 if($_POST['linkName']) {
     $sectionID = $_POST['sectionID'];
     $linkName = $_POST['linkName'];

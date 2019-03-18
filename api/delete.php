@@ -9,6 +9,7 @@ if($_POST['clientID']) {
     $deleteAllClientData->bind_param("i", $clientID);
     $deleteAllClientData->execute();
     $deleteAllClientData->store_result();
+    exit(); //exit because the client and all the sections/links are deleted and don't want the other if statements to run when the job is already done.
 }
 
 //If a section is deleted, then all the links that belong to that section need to be deleted too.
@@ -20,6 +21,7 @@ if($_POST['sectionID']) {
     $deleteSectionAndSectionLinks->bind_param("i", $sectionID);
     $deleteSectionAndSectionLinks->execute();
     $deleteSectionAndSectionLinks->store_result();
+    exit(); //exit because the section and all the links are deleted and don't want the other if statements to run when the job is already done.
 }
 
 //If a link is deleted, No other data relies on the link table's data so nothing else needs to be deleted.
