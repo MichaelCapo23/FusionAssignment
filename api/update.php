@@ -1,6 +1,6 @@
 <?php
 $output = [];
-//code to update Client, assuming the user sends new client name and id to update with.
+//Code to update client and the sections , assuming the user sends new client name and id to update with.
 if($_POST['clientName']){
     $newClientName = $_POST['newClientName']; // new client name
     $clientID = $_POST['clientID']; //old client ID
